@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>关于html结构的基础练习</title>
+		<link type="text/css" rel="stylesheet" href="css/base.css" />
+	</head>
+
+	<body class="all">
+		<nav class="daohang">
+			<h1>HTML快问快答！</h1>
+			<ul>
+				<li>
+					<a href="#article_1">HTML的定义、概念、发展简史</a>
+				</li>
+				<li>
+					<a href="#article_2">常用HTML标签的含义、用法</a>
+				</li>
+				<li>
+					<a href="#article_3">基于设计稿来合理规划HTML文档结构</a>
+				</li>
+				<li>
+					<a href="#celan">侧栏</a>
+				</li>
+			</ul>
+		</nav>
+		<div id="article_1" class="wen">
+			<h1>文章一：HTML的定义、概念、发展简史</h1>
+			<h2>——让我们一起来看一看吧！</h2>
+			<div class="author">作者详见出处。整理时间：<time datetime="2017-03-01">2017年3月1日</time>。</div>
+			<p>
+				蒂姆·伯纳斯-李，一名CERN（欧洲核子研究组织）的物理学家，在80年代后期设计了一种能在网路上分享文档的方式。 在这之前，网路上沟通的方式仅限于纯文本传递，比如：电子邮件、FTP(文件传输协议)和Usenet讨论版。HTML是利用 内容档案储存至中央服务器的方式，然后再将内容透过浏览器传递至本机工作站。 它简化了内容存取的方式，也让更多 丰富内容能够显示（诸如较复杂的文本格式与图片的显示）。HTML 源自于SGML——它是一种复杂的文档结构定义和内容 描述（文本或图像）语法；从HTML5起，HTML不再坚守SGML的语法。
+			</p>
+			<p>
+				HTML 是一种标记语言（markup language）。它告诉浏览器如何显示内容。HTML把内容（文字，图片，语言，影片等等） 和「presentation」（这个内容是如何显示，比如文字用什么颜色显示等等）分开。HTML使用预先定义的元素集合来识别 内容形态。 元素包含一个以上的标记来包含或者表达内容。标记利用尖括号表示，而结束标记（用来指示内容尾端）则在前 面加上斜线。
+			</p>
+			<p>
+				<b>本段文字出处：</b>
+				<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/Introduction" target="_blank">MDN HTML入门</a>
+				<i>返回主站：</i>
+				<a href="http://ife.baidu.com/">百度前端学院</a>
+			</p>
+			<img src="https://gss0.bdstatic.com/5eR1dDebRNRTm2_p8IuM_a/res/r/image/2017-03-01/895a80d96d662aefac81c65a443a99c1.jpg" />
+		</div>
+		<article id="article_2" class="wen">
+			<h1>文章二：常用HTML标签的含义、用法</h1>
+			<h2>——让我们一起来再看一看吧！</h2>
+			<div class="author">作者详见出处。整理时间：<time datetime="2017-03-01">2017年3月1日</time>。</div>
+			<p>
+				<ul id="uuu">
+					<li>第一种</li>
+					<li>第二种</li>
+					<li>第三种</li>
+					<li>第四种</li>
+				</ul>
+			</p>
+			<p>
+				请看图片：
+				<br />
+				<img class="tupian picborder" src="http://img2.imgtn.bdimg.com/it/u=2883560972,1671517372&fm=21&gp=0.jpg" />
+				<img class="tupian picborder" src="http://img3.imgtn.bdimg.com/it/u=1830592237,143586758&fm=23&gp=0.jpg" />
+				<img class="tupian picborder" src="http://img4.imgtn.bdimg.com/it/u=2856272714,2331056142&fm=21&gp=0.jpg" />
+				<img class="tupian picborder" src="http://img1.imgtn.bdimg.com/it/u=1571689339,2815335388&fm=21&gp=0.jpg" />
+				<img class="tupian picborder" src="http://img5.imgtn.bdimg.com/it/u=2897681207,942597900&fm=21&gp=0.jpg" />
+				<img class="tupian picborder" src="http://img3.imgtn.bdimg.com/it/u=324941938,1979436101&fm=21&gp=0.jpg" />
+				<img class="tupian picborder" src="http://img3.imgtn.bdimg.com/it/u=3463430524,1108368921&fm=23&gp=0.jpg" />
+				<div class="picWtext">
+					好看的图片<br />
+					<img src="http://img0.imgtn.bdimg.com/it/u=1074831908,3103551478&fm=23&gp=0.jpg" />
+				</div>
+
+			</p>
+			<p>
+				<b>本段文字出处：</b>
+				<a href="http://www.w3school.com.cn/tags/index.asp" target="_blank">参考手册</a>
+				<i>返回主站：</i>
+				<a href="http://ife.baidu.com/">百度前端学院</a>
+			</p>
+		</article>
+		<article id="article_3" class="wen">
+			<h1>文章三：基于设计稿来合理规划HTML文档结构</h1>
+			<h2>——让我们一起来再看一看吧2！</h2>
+			<div class="author">作者详见出处。整理时间：<time datetime="2017-03-01">2017年3月1日</time>。</div>
+			<p>
+				<ol>
+					<li>第一种</li>
+					<li>第二种</li>
+					<li>第三种</li>
+					<li>第四种</li>
+				</ol>
+			</p>
+			<p>
+				这里开始画表格：
+				<table class="biaoge">
+					<tr>
+						<th>11111111</th>
+						<th>22222222</th>
+						<th>3333333333</th>
+						<th>
+							<a href="#">操作</a>
+						</th>
+					</tr>
+					<tr>
+						<td>11111111</td>
+						<td>22222222</td>
+						<td>3333333333</td>
+						<td>4444444</td>
+					</tr>
+					<tr>
+						<td>11111111</td>
+						<td>22222222</td>
+						<td>3333333333</td>
+						<td>4444444</td>
+					</tr>
+				</table>
+				<hr />
+				<table border="3">
+					<caption>标题</caption>
+					<tr>
+						<th>表头1</th>
+						<th>表头2</th>
+						<th>表头3</th>
+						<th>表头4</th>
+					</tr>
+					<tr>
+						<td>11111111</td>
+						<td>22222222</td>
+						<td>3333333333</td>
+						<td>4444444</td>
+					</tr>
+					<tr>
+						<td>11111111</td>
+						<td>11111111</td>
+						<td>11111111</td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+				<table border="1">
+					<caption>标题</caption>
+					<tr>
+						<th>表头1</th>
+						<th>表头2</th>
+						<th>表头3</th>
+						<th>表头4</th>
+					</tr>
+					<tr>
+						<td>11111111</td>
+						<td>22222222</td>
+						<td colspan="2">3333333333</td>
+					</tr>
+					<tr>
+						<td>11111111</td>
+						<td>11111111</td>
+						<td>11111111111111</td>
+						<td>11111111111111</td>
+					</tr>
+				</table>
+				<table border="1">
+					<caption>标题</caption>
+					<tr>
+						<th rowspan="2">表头1</th>
+						<th>表头2</th>
+						<th>表头3</th>
+						<th>表头4</th>
+					</tr>
+					<tr>
+						<td>11111111</td>
+						<td>22222222</td>
+						<td>3333333333</td>
+					</tr>
+					<tr>
+						<td>11111111</td>
+						<td>11111111</td>
+						<td>11111111111111</td>
+						<td>11111111111111</td>
+					</tr>
+				</table>
+			</p>
+			<p>
+				<i>返回主站：</i>
+				<a href="http://ife.baidu.com/">百度前端学院</a>
+			</p>
+		</article>
+		<div id="celan">
+			<h3>欢迎您注册本网站</h3>
+			<dl>
+				<dt>注册通道1</dt>
+				<dd>——普通用户注册</dd>
+				<dt>注册通道2</dt>
+				<dd>——非普通用户注册</dd>
+			</dl>
+			<form id="resig">
+				<table>
+					<col align="right" />
+					<col align="left" />
+					<tr>
+						<td><label for="eml">电子邮箱：</label></td>
+						<td><input type="email" name="eml" id="eml" value="请输入您的电子邮箱：" /></td>
+					</tr>
+					<tr>
+						<td><label for="pw1">请设置一个密码：</label></td>
+						<td><input type="password" name="pw1" id="pw1" value="" /></td>
+					</tr>
+					<tr>
+						<td><label for="pw2">请重复您的密码：</label></td>
+						<td><input type="password" name="pw2" id="pw2" value="" /></td>
+					</tr>
+					<tr>
+						<td>性别：</td>
+						<td><label><input name="111" type="radio" value="" />男</label>
+							<label><input name="111" type="radio" value="" />女</label></td>
+					</tr>
+					<tr>
+						<td><label for="city">城市：</label></td>
+						<td>
+							<select id="city">
+								<option>北京</option>
+								<option>上海</option>
+								<option>广州</option>
+								<option>深圳</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>爱好：</td>
+						<td><label><input name="111" type="checkbox" value="" />读书</label>
+							<label><input name="111" type="checkbox" value="" />写字</label></td>
+					</tr>
+					<tr>
+						<td>个人描述：</td>
+						<td><textarea value="简单介绍一下自己吧！" rows="5" cols="50"></textarea></td>
+					</tr>
+				</table>
+
+				<button type="submit" class="tijiao">注册</button>
+			</form>
+		</div>
+		<footer>
+			版权所有。
+		</footer>
+	</body>
+
+</html>
