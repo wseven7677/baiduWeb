@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>关于html结构的基础练习</title>
+	</head>
+	<body>
+		<h1>HTML快问快答！</h1>
+		<nav>
+			<ul>
+				<li><a href="#article_1">HTML的定义、概念、发展简史</a></li>
+				<li><a href="#">常用HTML标签的含义、用法</a></li>
+				<li><a href="#">基于设计稿来合理规划HTML文档结构</a></li>
+				<li><a href="#">理解语义化，合理地使用HTML标签来构建页面</a></li>
+			</ul>
+		</nav>
+		<div id="article_1">
+			<h1>文章一：HTML的定义、概念、发展简史</h1>
+			<h2>——让我们一起来看一看吧！</h2>
+			<div>这里写作者和时间。</div>
+			<p>
+				蒂姆·伯纳斯-李，一名CERN（欧洲核子研究组织）的物理学家，在80年代后期设计了一种能在网路上分享文档的方式。
+				在这之前，网路上沟通的方式仅限于纯文本传递，比如：电子邮件、FTP(文件传输协议)和Usenet讨论版。HTML是利用
+				内容档案储存至中央服务器的方式，然后再将内容透过浏览器传递至本机工作站。 它简化了内容存取的方式，也让更多
+				丰富内容能够显示（诸如较复杂的文本格式与图片的显示）。HTML 源自于SGML——它是一种复杂的文档结构定义和内容
+				描述（文本或图像）语法；从HTML5起，HTML不再坚守SGML的语法。
+			</p>
+			<p>
+				HTML 是一种标记语言（markup language）。它告诉浏览器如何显示内容。HTML把内容（文字，图片，语言，影片等等）
+				和「presentation」（这个内容是如何显示，比如文字用什么颜色显示等等）分开。HTML使用预先定义的元素集合来识别
+				内容形态。 元素包含一个以上的标记来包含或者表达内容。标记利用尖括号表示，而结束标记（用来指示内容尾端）则在前
+				面加上斜线。
+			</p>
+			<p>
+				<b>本段文字出处：</b><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/Introduction" target="_blank">MDN HTML入门</a>
+			</p>
+		</div>
+	</body>
+</html>
