@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>task 3</title>
+		<style type="text/css">
+			/*这里写css样式*/
+			.content{
+				background: #eee;
+				border: 1px solid #999;
+				padding: 20px;
+				
+				position: relative;
+			}
+			.bLeft{
+				width: 200px;
+				background: #FFFFFF;
+				padding: 20px;
+				border: 1px solid #999;
+				
+				float: left;
+				
+			}
+			.bMid{
+				width: auto;
+				background: #FFFFFF;
+				padding: 20px;
+				border: 1px solid #999;
+				
+				margin-left: 280px;
+				margin-right: 200px;
+			}
+			.bRight{
+				width: 120px;
+				background: #FFFFFF;
+				padding: 20px;
+				border: 1px solid #999;
+				
+				position: absolute;
+				top: 20px;
+				right: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>logo</h1>
+			<nav>
+				<ul>
+					<li>nav1</li>
+					<li>nav2</li>
+					<li>nav3</li>
+					<li>nav4</li>
+				</ul>
+			</nav>
+		</header>
+		<div class="content">
+			<div class="bLeft">
+				<img src="http://ife.baidu.com/2017/asset/common/img/logo_a3b4064.png" />团队名称
+			</div>
+			<div class="bMid">
+				<h1>关于我们团队的介绍</h1>
+				<p>
+					我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。
+					我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。
+					我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。
+				</p>
+				<h3>2017春季班概述</h3>
+				<p>
+					一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。
+					一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。
+					一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。
+				</p>
+			</div>
+			<div class="bRight">
+				<img src="http://ife.baidu.com/2017/asset/common/img/logo_a3b4064.png" />
+				<img src="http://ife.baidu.com/2017/asset/common/img/logo_a3b4064.png" />
+				<img src="http://ife.baidu.com/2017/asset/common/img/logo_a3b4064.png" />
+				<img src="http://ife.baidu.com/2017/asset/common/img/logo_a3b4064.png" />
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		<footer>
+			copyright 2017
+		</footer>
+	</body>
+</html>
