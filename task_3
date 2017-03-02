@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title>task 3</title>
 		<style type="text/css">
 			/*这里写css样式*/
-			.content{
+			
+			.content {
 				background: #eee;
 				border: 1px solid #999;
 				padding: 20px;
-				
 				position: relative;
 			}
-			.bLeft{
+			
+			.bLeft {
 				width: 200px;
 				background: #FFFFFF;
-				padding: 20px;
 				border: 1px solid #999;
-				
 				float: left;
-				
+				padding: 20px;
 			}
-			.bMid{
+			
+			.bMid {
 				width: auto;
 				background: #FFFFFF;
-				padding: 20px;
 				border: 1px solid #999;
-				
+				position: relative;
 				margin-left: 280px;
 				margin-right: 200px;
-			}
-			.bRight{
-				width: 120px;
-				background: #FFFFFF;
 				padding: 20px;
+			}
+			
+			.bRight {
 				border: 1px solid #999;
-				
-				position: absolute;
-				top: 20px;
-				right: 20px;
+				background-color: #fff;
+				width: 120px;
+				float: right;
+				top: 0;
+				right: 0;
+				padding: 20px;
 			}
 		</style>
 	</head>
+
 	<body>
 		<header>
 			<h1>logo</h1>
@@ -56,27 +58,27 @@
 		</header>
 		<div class="content">
 			<div class="bLeft">
-				<img src="http://ife.baidu.com/2017/asset/common/img/logo_a3b4064.png" />团队名称
+				<img src="img/logo.jpg" />团队名称
+			</div>
+			<div class="bRight">
+				<img src="img/logo.jpg" />
+				<img src="img/logo.jpg" />
+				<img src="img/logo.jpg" />
+				<img src="img/logo.jpg" />
 			</div>
 			<div class="bMid">
 				<h1>关于我们团队的介绍</h1>
-				<p>
-					我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。
-					我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。
-					我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。我们团队的来历。
-				</p>
 				<h3>2017春季班概述</h3>
 				<p>
-					一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。
-					一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。
-					一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。
+					一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。 一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。 一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。一年之计在于春。
 				</p>
-			</div>
-			<div class="bRight">
-				<img src="http://ife.baidu.com/2017/asset/common/img/logo_a3b4064.png" />
-				<img src="http://ife.baidu.com/2017/asset/common/img/logo_a3b4064.png" />
-				<img src="http://ife.baidu.com/2017/asset/common/img/logo_a3b4064.png" />
-				<img src="http://ife.baidu.com/2017/asset/common/img/logo_a3b4064.png" />
+				<h3>重要觉悟：</h3>
+				<p>
+					<blockquote>
+						当使用span标签时,我们经常发现:靠右的元素和前面的元素被自动换行了,即不再在同一行内,原因是:当“非float的元素”和“float的元素”在一起的时候,如果非float元素在先,那么float的元素将受到排斥。也就是说:如果你在设置span是float:right时,把他放在所有元素的最前面就正常了,以下为举例(调用三个元素,想让第三个元素靠右显示):
+					</blockquote>
+					在div的排放顺序上，应该先安排float块，再安排其他块，否则出现排斥会导致换行。
+				</p>
 			</div>
 			<div style="clear: both;"></div>
 		</div>
@@ -84,4 +86,5 @@
 			copyright 2017
 		</footer>
 	</body>
+
 </html>
