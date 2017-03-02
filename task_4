@@ -6,13 +6,21 @@
 		<title>task - 4 - </title>
 		<style type="text/css">
 			.bGray {
+				position: fixed;
+				left: 50%;
+				top: 50%;
+				height: 200px;
+				width: 400px;
+			}
+			
+			.bGrayIn {
 				background: #ccc;
-				position: absolute;
 				width: 400px;
 				height: 200px;
 				overflow: hidden;
-				top: 25%;
-				left: 25%;
+				position: relative;
+				top: -50%;
+				left: -50%;
 			}
 			
 			.circleLeft {
@@ -39,8 +47,10 @@
 
 	<body>
 		<div class="bGray">
-			<div class="circleLeft"></div>
-			<div class="circleRight"></div>
+			<div class="bGrayIn">
+				<div class="circleLeft"></div>
+				<div class="circleRight"></div>
+			</div>
 		</div>
 
 	</body>
