@@ -24,18 +24,31 @@ var aqiData = [
   ["西安", 100]
 ];
 
-
+a();
 function a()
 {
-	var i;
+			var i;
 for(i = 0;i < aqiData.length;++i){
 	if(aqiData[i][1] < 60){
 		document.write(aqiData[i][1] + "<br>");
-		
 	}
 }
+}
 
-a();
+//(function () {
+//
+///*
+//在注释下方编写代码
+//遍历读取aqiData中各个城市的数据
+//将空气质量指数大于60的城市显示到aqi-list的列表中
+//*/
+//		var i;
+//for(i = 0;i < aqiData.length;++i){
+//	if(aqiData[i][1] < 60){
+//		document.write(aqiData[i][1] + "<br>");
+//	}
+//}
+//})();
 </script>
 </body>
 </html>
