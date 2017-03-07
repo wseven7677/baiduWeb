@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>javascript task 4</title>
+		<style type="text/css">
+
+		</style>
+		<script type="text/javascript">
+			var data = new Array();
+			data = [1, 2, 3, 4];
+
+			function fLeftIn() {
+				var dataIn = document.getElementById("txtIn").value;
+				data.unshift(dataIn);
+			}
+
+			function fLeftOut() {
+
+				data.shift();
+			}
+
+			function fRightIn() {
+				var dataIn = document.getElementById("txtIn").value;
+				data.push(dataIn);
+			}
+
+			function fRightOut() {
+
+				data.pop();
+			}
+			
+			for(var i = 0; i < data.length;++i){
+				document.writeln(data[i]);
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="mainB">
+			<span id="dispPane">
+
+			</span>
+			<div id="ctrlPane">
+				<input type="text" name="" id="txtIn" value="" />
+				<input type="button" name="btn1" id="btnLeftIn" value="左侧入" onclick="fLeftIn();" />
+				<input type="button" name="btn2" id="btnLeftOut" value="左侧出" onclick="fLeftOut();" />
+				<input type="button" name="btn3" id="btnRightIn" value="右侧入" onclick="fRightIn();" />
+				<input type="button" name="btn4" id="btnRightOut" value="右侧出" onclick="fRightOut();" />
+			</div>
+
+		</div>
+	</body>
+
+</html>
