@@ -5,52 +5,96 @@
 		<meta charset="UTF-8">
 		<title>javascript task 4</title>
 		<style type="text/css">
-
-		</style>
-		<script type="text/javascript">
-			var data = new Array();
-			data = [1, 2, 3, 4];
-
-			function fLeftIn() {
-				var dataIn = document.getElementById("txtIn").value;
-				data.unshift(dataIn);
-			}
-
-			function fLeftOut() {
-
-				data.shift();
-			}
-
-			function fRightIn() {
-				var dataIn = document.getElementById("txtIn").value;
-				data.push(dataIn);
-			}
-
-			function fRightOut() {
-
-				data.pop();
+			span {
+				background: #EEE;
+				border: 1px solid red;
+				padding: 20px;
+				margin: 10px;
+				display: inline-block;
 			}
 			
-			for(var i = 0; i < data.length;++i){
-				document.writeln(data[i]);
+			#dispPane {
+				margin-top: 50px;
 			}
-		</script>
+		</style>
+
 	</head>
 
 	<body>
 		<div class="mainB">
-			<span id="dispPane">
-
-			</span>
-			<div id="ctrlPane">
+			<div>
 				<input type="text" name="" id="txtIn" value="" />
-				<input type="button" name="btn1" id="btnLeftIn" value="左侧入" onclick="fLeftIn();" />
-				<input type="button" name="btn2" id="btnLeftOut" value="左侧出" onclick="fLeftOut();" />
-				<input type="button" name="btn3" id="btnRightIn" value="右侧入" onclick="fRightIn();" />
-				<input type="button" name="btn4" id="btnRightOut" value="右侧出" onclick="fRightOut();" />
+				<button id="btnLeftIn">左侧入</button>
+				<button id="btnLeftOut">左侧出</button>
+				<button id="btnRightIn">右侧入</button>
+				<button id="btnRightOut">右侧出</button>
 			</div>
-
+			<div id="dispPane">
+				<span>10</span>
+				<span>20</span>
+				<span>30</span>
+				<span>40</span>
+				<span>50</span>
+			</div>
 		</div>
+		<script type="text/javascript">
+			function lIn() {
+				var data = document.getElementById("txtIn").value; //输入的值
+				if(data == null){
+					return;
+				}
+				var disp = document.getElementById("dispPane");
+				var newSpan = document.createElement("span");
+				var newTxt = document.createTextNode(data);
+				newSpan.appendChild(newTxt);
+				disp.insertBefore(newSpan, disp.firstChild);
+			}
+
+			function lOut() {
+				var disp = document.getElementById("dispPane");
+				var delSpanCollection = disp.getElementsByTagName("span");
+				if(delSpanCollection.length == 0) {
+					return;
+				}
+				var delSpan = delSpanCollection[0];
+				disp.removeChild(delSpan);
+			}
+
+			function rIn() {
+				var data = document.getElementById("txtIn").value; //输入的值
+				var disp = document.getElementById("dispPane");
+				var newSpan = document.createElement("span");
+				var newTxt = document.createTextNode(data);
+				newSpan.appendChild(newTxt);
+				disp.appendChild(newSpan);
+
+			}
+
+			function rOut() {
+				var disp = document.getElementById("dispPane");
+				var delSpanCollection = disp.getElementsByTagName("span");
+				if(delSpanCollection.length == 0) {
+					return;
+				}
+				var delSpan = delSpanCollection[delSpanCollection.length - 1];
+				disp.removeChild(delSpan);
+			}
+
+			function delTheSpan(i) {
+				var disp = document.getElementById("dispPane");
+				var delSpanCollection = disp.getElementsByTagName("span");
+				if(delSpanCollection.length == 0) {
+					return;
+				}
+				var delSpan = delSpanCollection[i];
+				disp.removeChild(delSpan);
+			}
+			document.getElementById("btnLeftIn").onclick = function() { lIn(); };
+			document.getElementById("btnLeftOut").onclick = function() { lOut(); };
+			document.getElementById("btnRightIn").onclick = function() { rIn(); };
+			document.getElementById("btnRightOut").onclick = function() { rOut(); };
+			
+		</script>
 	</body>
 
 </html>
