@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>javascript task 4</title>
+		<style type="text/css">
+			span {
+				background: #EEE;
+				border: 1px solid red;
+			
+				margin: 5px;
+				display: inline-block;
+				width: 10px;
+			}
+			
+			#dispPane {
+				margin-top: 50px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="mainB">
+			<div>
+				<input type="text" name="" id="txtIn" value="" />
+				<button id="btnLeftIn">左侧入</button>
+				<button id="btnLeftOut">左侧出</button>
+				<button id="btnRightIn">右侧入</button>
+				<button id="btnRightOut">右侧出</button>
+			</div>
+			<div id="dispPane">
+		
+			</div>
+		</div>
+		<script type="text/javascript">
+			function judgeDataIn() {
+				var data = document.getElementById("txtIn").value; //输入的值
+				if(data == "") {
+					return null;
+				}
+				if(data == " ") {
+					return null;
+				}
+				if(data < 10 || data > 100) {
+					return null;
+				}
+				if(document.getElementById("dispPane").childNodes.length > 60){
+					alert("个数太多啦。");
+					return null;
+				}
+				if(data <=100 && data >=10){
+					return data;
+				}
+				return null;
+			}
+
+			function lIn() {
+				var data = judgeDataIn();
+				if(data == null) {
+					return;
+				}
+				var disp = document.getElementById("dispPane");
+				var newSpan = document.createElement("span");
+				newSpan.style.height = data + "px";
+				newSpan.onclick = function() { objDisp.removeChild(this); };
+				disp.insertBefore(newSpan, disp.firstChild);
+			}
+
+			function lOut() {
+				var disp = document.getElementById("dispPane");
+				var delSpanCollection = disp.getElementsByTagName("span");
+				if(delSpanCollection.length == 0) {
+					return;
+				}
+				var delSpan = delSpanCollection[0];
+				alert("将删除" + delSpan.innerText + "。");
+				disp.removeChild(delSpan);
+			}
+
+			function rIn() {
+				var data = judgeDataIn();
+				if(data == null) {
+					return;
+				}
+				var disp = document.getElementById("dispPane");
+				var newSpan = document.createElement("span");
+				newSpan.style.height = data + "px";
+				newSpan.onclick = function() { objDisp.removeChild(this); };
+				disp.appendChild(newSpan);
+
+			}
+
+			function rOut() {
+				var disp = document.getElementById("dispPane");
+				var delSpanCollection = disp.getElementsByTagName("span");
+				if(delSpanCollection.length == 0) {
+					return;
+				}
+				var delSpan = delSpanCollection[delSpanCollection.length - 1];
+				alert("将删除" + delSpan.innerText + "。");
+				disp.removeChild(delSpan);
+			}
+
+			document.getElementById("btnLeftIn").onclick = function() { lIn(); };
+			document.getElementById("btnLeftOut").onclick = function() { lOut(); };
+			document.getElementById("btnRightIn").onclick = function() { rIn(); };
+			document.getElementById("btnRightOut").onclick = function() { rOut(); };
+
+			var objDisp = document.getElementById("dispPane");
+			for(var i = 0; i < objDisp.childNodes.length; ++i) {
+				objDisp.childNodes[i].onclick = function() { objDisp.removeChild(this); };
+			}
+		</script>
+	</body>
+
+</html>
