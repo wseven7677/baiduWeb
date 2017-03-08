@@ -40,13 +40,14 @@
 		<script type="text/javascript">
 			function lIn() {
 				var data = document.getElementById("txtIn").value; //输入的值
-				if(data == null){
+				if(data == "") {
 					return;
 				}
 				var disp = document.getElementById("dispPane");
 				var newSpan = document.createElement("span");
 				var newTxt = document.createTextNode(data);
 				newSpan.appendChild(newTxt);
+				newSpan.onclick = function() { objDisp.removeChild(this); };
 				disp.insertBefore(newSpan, disp.firstChild);
 			}
 
@@ -57,15 +58,20 @@
 					return;
 				}
 				var delSpan = delSpanCollection[0];
+				alert("将删除" + delSpan.innerText + "。");
 				disp.removeChild(delSpan);
 			}
 
 			function rIn() {
 				var data = document.getElementById("txtIn").value; //输入的值
+				if(data == "") {
+					return;
+				}
 				var disp = document.getElementById("dispPane");
 				var newSpan = document.createElement("span");
 				var newTxt = document.createTextNode(data);
 				newSpan.appendChild(newTxt);
+				newSpan.onclick = function() { objDisp.removeChild(this); };
 				disp.appendChild(newSpan);
 
 			}
@@ -77,23 +83,19 @@
 					return;
 				}
 				var delSpan = delSpanCollection[delSpanCollection.length - 1];
+				alert("将删除" + delSpan.innerText + "。");
 				disp.removeChild(delSpan);
 			}
 
-			function delTheSpan(i) {
-				var disp = document.getElementById("dispPane");
-				var delSpanCollection = disp.getElementsByTagName("span");
-				if(delSpanCollection.length == 0) {
-					return;
-				}
-				var delSpan = delSpanCollection[i];
-				disp.removeChild(delSpan);
-			}
 			document.getElementById("btnLeftIn").onclick = function() { lIn(); };
 			document.getElementById("btnLeftOut").onclick = function() { lOut(); };
 			document.getElementById("btnRightIn").onclick = function() { rIn(); };
 			document.getElementById("btnRightOut").onclick = function() { rOut(); };
-			
+
+			var objDisp = document.getElementById("dispPane");
+			for(var i = 0; i < objDisp.childNodes.length; ++i) {
+				objDisp.childNodes[i].onclick = function() { objDisp.removeChild(this); };
+			}
 		</script>
 	</body>
 
