@@ -8,7 +8,6 @@
 			span {
 				background: #EEE;
 				border: 1px solid red;
-			
 				margin: 5px;
 				display: inline-block;
 				width: 10px;
@@ -29,33 +28,42 @@
 				<button id="btnLeftOut">左侧出</button>
 				<button id="btnRightIn">右侧入</button>
 				<button id="btnRightOut">右侧出</button>
+
+				<button id="btnSort">排序</button>
 			</div>
 			<div id="dispPane">
-		
+
 			</div>
 		</div>
 		<script type="text/javascript">
+			//排序：
+			function sortThem() {
+				var disP = document.getElementById("dispPane");
+				var oriSpanCollection = disP.getElementsByTagName("span");
+				var temp;
+				for(var i = 0; i < oriSpanCollection.length - 1;++i){
+					for(var j = 0; j < oriSpanCollection.length -1 - i;++j){
+						if(oriSpanCollection[j].style.height > oriSpanCollection[j+1].style.height){
+							temp = oriSpanCollection[j].style.height;
+							oriSpanCollection[j].style.height = oriSpanCollection[j+1].style.height;
+							oriSpanCollection[j+1].style.height = temp;
+						}
+					}
+				}
+			}
+//判断输入：
 			function judgeDataIn() {
 				var data = document.getElementById("txtIn").value; //输入的值
-				if(data == "") {
-					return null;
-				}
-				if(data == " ") {
-					return null;
-				}
-				if(data < 10 || data > 100) {
-					return null;
-				}
-				if(document.getElementById("dispPane").childNodes.length > 60){
+				if(document.getElementById("dispPane").childNodes.length > 60) {
 					alert("个数太多啦。");
 					return null;
 				}
-				if(data <=100 && data >=10){
+				if(data <= 100 && data >= 10) {
 					return data;
 				}
 				return null;
 			}
-
+//点击了就运行这些函数：
 			function lIn() {
 				var data = judgeDataIn();
 				if(data == null) {
@@ -102,12 +110,14 @@
 				alert("将删除" + delSpan.innerText + "。");
 				disp.removeChild(delSpan);
 			}
-
+			//赋予 点击 响应事件：
 			document.getElementById("btnLeftIn").onclick = function() { lIn(); };
 			document.getElementById("btnLeftOut").onclick = function() { lOut(); };
 			document.getElementById("btnRightIn").onclick = function() { rIn(); };
 			document.getElementById("btnRightOut").onclick = function() { rOut(); };
-
+			
+			document.getElementById("btnSort").onclick = function() { sortThem(); };
+			//为已有子节点赋予属性：
 			var objDisp = document.getElementById("dispPane");
 			for(var i = 0; i < objDisp.childNodes.length; ++i) {
 				objDisp.childNodes[i].onclick = function() { objDisp.removeChild(this); };
