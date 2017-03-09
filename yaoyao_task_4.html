@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>听指令的小方块</title>
+		<style type="text/css">
+			body {
+				background: #eee;
+				margin: 0;
+			}
+			
+			#outer {
+				position: absolute;
+				width: 600px;
+				height: 500px;
+				top: 50%;
+				left: 50%;
+			}
+			
+			#inner {
+				position: relative;
+				width: 600px;
+				height: 500px;
+				background: #fff;
+				top: -50%;
+				left: -50%;
+				padding: 5px;
+			}
+			
+			.bPos {
+				display: inline-block;
+				border: 1px solid;
+				margin: -3px;
+				width: 50px;
+				height: 50px;
+			}
+			
+			#bHero {
+				background: #0000FF;
+				border-top: 10px solid skyblue;
+				width: 40px;
+				height: 30px;
+				margin: 5px;
+			}
+			
+			#bBtn {
+				margin-top: 50px;
+				margin-left: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="outer">
+			<div id="inner">
+				<div id="bArea">
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos">
+
+						<div id="bHero">
+
+						</div>
+					</div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+					<div class="bPos"></div>
+				</div>
+				<div id="bBtn">
+					<button id="btnGo">GO</button>
+					<button id="btnL">Turn Left</button>
+					<button id="btnR">Turn Right</button>
+					<button id="btnB">Turn Back</button>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			const infoNumCol = 11; //一行多少个方块
+			direcHero = 0; //方向
+			function getHeroPos() {
+				var posH;
+				var posV;
+				var posAll;
+				var hArea = document.getElementById("bArea");
+				var hPosCollection = hArea.getElementsByClassName("bPos"); //一维数组
+				for(var i = 0; i < hPosCollection.length; ++i) {
+					if(hPosCollection[i].getElementsByTagName("div").length == 1) {
+						posAll = i;
+						break;
+					}
+				}
+				posH = Math.floor(posAll / infoNumCol);
+				posV = posAll % infoNumCol;
+
+				return [posH, posV];
+			}
+
+			function setHeroPos(posH, posV) {
+				//获得位置：
+				var posCollection = getHeroPos();
+				var posAll = posCollection[0] * infoNumCol + posCollection[1];
+				//删除原位置主角：
+				var hArea = document.getElementById("bArea");
+				var hHeroPos = hArea.getElementsByClassName("bPos")[posAll];
+				var tobeDel = hHeroPos.getElementsByTagName("div")[0];
+				hHeroPos.removeChild(tobeDel);
+				//为主角建立新位置：
+				var posNew = posH * infoNumCol + posV;
+				var hHeroNewPos = hArea.getElementsByClassName("bPos")[posNew];
+				var hNewHero = document.createElement("div");
+				hNewHero.id = "bHero";
+				hHeroNewPos.appendChild(hNewHero);
+				setDirection();
+			}
+
+			function fGo() {
+				var pos = getHeroPos();
+				var hArea = document.getElementById("bArea");
+				var rgNum = hArea.getElementsByClassName("bPos").length;
+				switch(direcHero) {
+					case 0: //up
+						if(pos[0] > 0) {
+							setHeroPos(pos[0] - 1, pos[1]);
+						} else {
+							return;
+						}
+
+						break;
+					case 3: //l
+						if(pos[1] > 0) {
+							setHeroPos(pos[0], pos[1] - 1);
+						} else {
+							return;
+						}
+
+						break;
+					case 2: //d
+						if(pos[0] < Math.floor(rgNum / infoNumCol) - 1) {
+							setHeroPos(pos[0] + 1, pos[1]);
+						} else {
+							return;
+						}
+
+						break;
+					case 1: //r
+						if(pos[1] < infoNumCol - 1) {
+							setHeroPos(pos[0], pos[1] + 1);
+						} else {
+							return;
+						}
+
+						break;
+					default:
+						setHeroPos(pos[0], pos[1]);
+				}
+			}
+
+			function setDirection() {
+				var hHero = document.getElementById("bHero");
+				switch(direcHero) {
+					case 0: //up
+						hHero.style.border = "none";
+						hHero.style.borderTop = "10px solid skyblue";
+						hHero.style.width = "40px";
+						hHero.style.height = "30px";
+						break;
+					case 3: //l
+						hHero.style.border = "none";
+						hHero.style.borderLeft = "10px solid skyblue";
+						hHero.style.width = "30px";
+						hHero.style.height = "40px";
+						break;
+					case 2: //d
+						hHero.style.border = "none";
+						hHero.style.borderBottom = "10px solid skyblue";
+						hHero.style.width = "40px";
+						hHero.style.height = "30px";
+						break;
+					case 1: //r
+						hHero.style.border = "none";
+						hHero.style.borderRight = "10px solid skyblue";
+						hHero.style.width = "30px";
+						hHero.style.height = "40px";
+						break;
+				}
+			}
+
+			function changeDirection(dirH) {
+				switch(dirH) {
+					case "left":
+						if(direcHero == 0) {
+							direcHero = 3;
+						} else {
+							direcHero -= 1;
+						}
+						break;
+					case "right":
+						if(direcHero == 3) {
+							direcHero = 0;
+						} else {
+							direcHero += 1;
+						}
+						break;
+					case "back":
+						if(direcHero >= 2) { direcHero -= 2; } else { direcHero += 2; }
+						break;
+				}
+			}
+
+			document.getElementById("btnGo").onclick = function() {
+				fGo();
+			};
+			document.getElementById("btnL").onclick = function() {
+				changeDirection("left");
+				setDirection();
+			};
+			document.getElementById("btnR").onclick = function() {
+				changeDirection("right");
+				setDirection();
+			};
+			document.getElementById("btnB").onclick = function() {
+				changeDirection("back");
+				setDirection();
+			};
+		</script>
+	</body>
+
+</html>
