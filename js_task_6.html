@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>javascript task 6</title>
+		<title>javascript task 4</title>
 		<style type="text/css">
 			span {
 				background: #EEE;
@@ -24,13 +24,20 @@
 		<div class="mainB">
 			<div>
 				<textarea id="txtIn" rows="5" cols="30">请输入...</textarea><br><br>
-				<button id="btnRightIn">追加</button>
-				<button id="btnClear">清空</button>
+				<button id="btnLeftIn">左侧入</button>
+				<button id="btnLeftOut">左侧出</button>
+				<button id="btnRightIn">右侧入</button>
+				<button id="btnRightOut">右侧出</button>
 				<br><br>
+				<input type="text" name="" id="inputSearch" value="" />
 				<button id="btnSearch">查询</button>
 			</div>
 			<div id="dispPane">
-				<span>we are heheda and you are gegeda while searching files ok.</span>
+				<span>are</span>
+				<span>you</span>
+				<span>ok</span>
+				<span>iam</span>
+				<span>fine</span>
 			</div>
 		</div>
 		<script type="text/javascript">
@@ -44,8 +51,42 @@
 				if(data == "请输入...") {
 					return null;
 				}
+				var dataS = data.split(/\s+/);
+				return dataS;
+			}
 
+			function judgeSearchIn() {
+				var data = document.getElementById("inputSearch").value; //输入的值
+				if(data == /\s+/) {
+					return null;
+				}
 				return data;
+			}
+
+			function lIn() {
+				var data = judgeDataIn();
+				if(data == null) {
+					return;
+				}
+				for(var i = 0; i < data.length; ++i) {
+					var disp = document.getElementById("dispPane");
+					var newSpan = document.createElement("span");
+					var newTxt = document.createTextNode(data[i]);
+					newSpan.appendChild(newTxt);
+					newSpan.onclick = function() { objDisp.removeChild(this); };
+					disp.insertBefore(newSpan, disp.firstChild);
+				}
+			}
+
+			function lOut() {
+				var disp = document.getElementById("dispPane");
+				var delSpanCollection = disp.getElementsByTagName("span");
+				if(delSpanCollection.length == 0) {
+					return;
+				}
+				var delSpan = delSpanCollection[0];
+				alert("将删除" + delSpan.innerText + "。");
+				disp.removeChild(delSpan);
 			}
 
 			function rIn() {
@@ -53,32 +94,61 @@
 				if(data == null) {
 					return;
 				}
-				var disp = document.getElementById("dispPane");
-				var newSpan = disp.getElementsByTagName("span")[0];
-				newSpan.innerText += data;
+				for(var i = 0; i < data.length; ++i) {
+					var disp = document.getElementById("dispPane");
+					var newSpan = document.createElement("span");
+					var newTxt = document.createTextNode(data[i]);
+					newSpan.appendChild(newTxt);
+					newSpan.onclick = function() { objDisp.removeChild(this); };
+					disp.appendChild(newSpan);
+				}
+
 			}
 
-			function fClear() {
+			function rOut() {
 				var disp = document.getElementById("dispPane");
-				var newSpan = disp.getElementsByTagName("span")[0];
-				newSpan.innerText = "";
+				var delSpanCollection = disp.getElementsByTagName("span");
+				if(delSpanCollection.length == 0) {
+					return;
+				}
+				var delSpan = delSpanCollection[delSpanCollection.length - 1];
+				alert("将删除" + delSpan.innerText + "。");
+				disp.removeChild(delSpan);
 			}
 
 			function fSearch() {
-				var data = judgeDataIn();
+				var data = judgeSearchIn();
 				if(data == null) {
 					return;
 				}
 				var disp = document.getElementById("dispPane");
-				var newSpanText = disp.getElementsByTagName("span")[0].innerText;
-				var zhengZe = new RegExp("/" + data + "/g");
-				var replcement = "<b>" + newSpanText.match(data)[0] + "</b>";
-				newSpanText.replace(zhengZe, replcement);
-//				console.log(newSpanText);
+				//初始化背景颜色：
+				for(var i = 0; i < disp.getElementsByTagName("span").length; ++i) {
+					disp.getElementsByTagName("span")[i].style.backgroundColor = "#EEEEEE";
+				}
+				//统计所有的span内容：newSpanText
+				var newSpanText = new Array;
+				for(var i = 0; i < disp.getElementsByTagName("span").length; ++i) {
+					newSpanText[i] = disp.getElementsByTagName("span")[i].innerText;
+				}
+				//匹配：
+				var zhengZe = new RegExp(data);
+				for(var k = 0; k < newSpanText.length; ++k) {
+					if(newSpanText[k].search(zhengZe) != -1) {
+						disp.getElementsByTagName("span")[k].style.backgroundColor = "yellow";
+					}
+				}
 			}
+			document.getElementById("btnLeftIn").onclick = function() { lIn(); };
+			document.getElementById("btnLeftOut").onclick = function() { lOut(); };
 			document.getElementById("btnRightIn").onclick = function() { rIn(); };
-			document.getElementById("btnClear").onclick = function() { fClear(); };
+			document.getElementById("btnRightOut").onclick = function() { rOut(); };
 			document.getElementById("btnSearch").onclick = function() { fSearch(); };
+
+			var objDisp = document.getElementById("dispPane");
+			for(var i = 0; i < objDisp.childNodes.length; ++i) {
+				objDisp.childNodes[i].onclick = function() { objDisp.removeChild(this); };
+			}
 		</script>
 	</body>
 
