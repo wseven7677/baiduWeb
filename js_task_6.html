@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>javascript task 6</title>
+		<style type="text/css">
+			span {
+				background: #EEE;
+				border: 1px solid red;
+				padding: 20px;
+				margin: 10px;
+				display: inline-block;
+			}
+			
+			#dispPane {
+				margin-top: 50px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="mainB">
+			<div>
+				<textarea id="txtIn" rows="5" cols="30">请输入...</textarea><br><br>
+				<button id="btnRightIn">追加</button>
+				<button id="btnClear">清空</button>
+				<br><br>
+				<button id="btnSearch">查询</button>
+			</div>
+			<div id="dispPane">
+				<span>we are heheda and you are gegeda while searching files ok.</span>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//判断输入：
+			function judgeDataIn() {
+				var data = document.getElementById("txtIn").value; //输入的值
+				if(document.getElementById("dispPane").childNodes.length > 60) {
+					alert("个数太多啦。");
+					return null;
+				}
+				if(data == "请输入...") {
+					return null;
+				}
+
+				return data;
+			}
+
+			function rIn() {
+				var data = judgeDataIn();
+				if(data == null) {
+					return;
+				}
+				var disp = document.getElementById("dispPane");
+				var newSpan = disp.getElementsByTagName("span")[0];
+				newSpan.innerText += data;
+			}
+
+			function fClear() {
+				var disp = document.getElementById("dispPane");
+				var newSpan = disp.getElementsByTagName("span")[0];
+				newSpan.innerText = "";
+			}
+
+			function fSearch() {
+				var data = judgeDataIn();
+				if(data == null) {
+					return;
+				}
+				var disp = document.getElementById("dispPane");
+				var newSpanText = disp.getElementsByTagName("span")[0].innerText;
+				var zhengZe = new RegExp("/" + data + "/g");
+				var replcement = "<b>" + newSpanText.match(data)[0] + "</b>";
+				newSpanText.replace(zhengZe, replcement);
+//				console.log(newSpanText);
+			}
+			document.getElementById("btnRightIn").onclick = function() { rIn(); };
+			document.getElementById("btnClear").onclick = function() { fClear(); };
+			document.getElementById("btnSearch").onclick = function() { fSearch(); };
+		</script>
+	</body>
+
+</html>
