@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>不听话的死方块</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+			}
+			
+			body {
+				background: #eee;
+			}
+			/*总面板*/
+			
+			#pane {
+				background: gray;
+				border: 1px solid black;
+				border-radius: 10px;
+				box-shadow: 5px 5px 10px;
+				width: 610px;
+				margin: 20px auto auto auto;
+			}
+			/*地图面板*/
+			
+			#paneMap {
+				background: #fff;
+				border: 1px solid black;
+				border-radius: 10px;
+				margin: 10px;
+				padding: 10px;
+				
+				position: relative;
+			}
+			.mapRow{
+				text-align: center;
+				
+			}
+			.mapBlocks {
+				display: inline-block;
+				padding: 1px;
+			}
+			
+			.mapBlocksInner {
+				width: 50px;
+				height: 50px;
+				background: #eee;
+			}
+			/*控制面板*/
+			
+			#paneCtrl {
+				padding: 12px;
+				text-align: center;
+			}
+			
+			button {
+				background: #fff;
+				border: 1px solid black;
+				border-radius: 5px;
+				height: 30px;
+				width: 100px;
+				margin-left: 20px;
+				margin-right: 20px;
+			}
+			
+			button:hover {
+				background: #eee;
+				color: red;
+				border: 1px solid red;
+			}
+			/*主角*/
+			#heroBlock{
+				width: 50px;
+				height: 40px;
+				border-top: 10px solid blue;
+				background: red;
+				
+				position: absolute;
+				top: 0;
+				left: 0;
+				
+				transition-property: all;
+				transition-duration: 0.5s;
+				transition-timing-function: ease-in;
+				
+				-webkit-transition-property: all;
+				-webkit-transition-duration: 0.5s;
+				-webkit-transition-timing-function: ease-in;
+				
+				-moz-transition-property: all;
+				-moz-transition-duration: 0.5s;
+				-moz-transition-timing-function: ease-in;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--主框架-->
+		<div id="mainOut">
+			<!--总面板-->
+			<div id="pane">
+				<!--地图面板-->
+				<div id="paneMap">
+					<!--主角-->
+					<div id="heroBlock"></div>
+					<!--地图块-->
+					<div class="mapRow">
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+					</div>
+					<div class="mapRow">
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+					</div>
+					<div class="mapRow">
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+						<div class="mapBlocks"><div class="mapBlocksInner"></div></div>
+					</div>
+					<div class="mapRow">
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+					</div>
+					<div class="mapRow">
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+					</div>
+					<div class="mapRow">
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+					</div>
+					<div class="mapRow">
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+					</div>
+					<div class="mapRow">
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+						<div class="mapBlocks">
+							<div class="mapBlocksInner"></div>
+						</div>
+					</div>
+			</div>
+				<!--控制面板-->
+				<div id="paneCtrl">
+					<button id="btnGo">Go</button>
+					<button id="btnLeft">turn left</button>
+					<button id="btnRight">turn right</button>
+					<button id="btnBack">turn back</button>
+				</div>
+			</div>
+		</div>
+		<!--js控制脚本-->
+		<script type="text/javascript">
+			/***********函数：*************
+				 * 判断是否可以往这个方向走 （边界）
+			 ***************************** */
+			function judgeMove(posNum,posFace){
+				var posX = Math.floor(posNum / 10);
+				var posY = posNum % 10;
+				switch (posFace){
+					case 0:
+						if(posX - 1 >= 0){ return true;}else{return false;}break;
+					case 180:
+						if(posX + 1 <= 7){ return true;}else{return false;}break;
+					case 270:
+						if(posY - 1 >= 0){ return true;}else{return false;}break;
+					case 90:
+						if(posY + 1 <= 9){ return true;}else{return false;}break;
+				}
+			}
+			/***********函数：**********
+				 行走
+			 ****************************/
+			function funGo(vX,vY,vPosNum,vFace){
+			//如果到达边界则返回原本属性：
+				if(! judgeMove(vPosNum,vFace)){
+					return [vX,vY,vPosNum];
+				}
+				var num = vPosNum;//当前位置
+				var newNum;//新位置
+			//新位置,根据朝向改变内部序号属性：
+				if(vFace == 0){newNum = num - 10;}
+				else if(vFace == 180){newNum = num + 10;}
+				else if(vFace == 270){newNum = num - 1;}
+				else {newNum = num + 1;}
+			//根据newNum获得新top和left属性：
+				var hMapBlocks = document.getElementsByClassName("mapBlocks");
+				var newX = hMapBlocks[newNum].offsetTop;
+				var newY = hMapBlocks[newNum].offsetLeft;
+			//设置主角在地图中的显示：
+				 var hMapHero = document.getElementById("heroBlock");
+				 hMapHero.style.top = newX + "px";
+				 hMapHero.style.left = newY + "px";
+			//返回对象新属性：
+				return [newX,newY,newNum];
+				
+			}
+			/***********函数：**********
+				 旋转
+			 ****************************/
+			function funRot(vFace,turnWhere){
+			//获得地图中的主角：
+				var hMapHero = document.getElementById("heroBlock");
+			//设置主角对象的face值：
+				if(turnWhere == "tl"){
+					if(vFace ==0){vFace = 270;}else{vFace -= 90;}
+				}else if(turnWhere == "tr"){
+					if(vFace ==270){vFace = 0;}else{vFace += 90;}
+				}else{
+					if(vFace >= 180){vFace -= 180;}else{vFace += 180;}
+				}
+			//依据face值设置主角在地图中的朝向：
+				hMapHero.style.cssText +="-webkit-transform: rotate("+vFace+"deg);-moz-transform: rotate("+vFace+"deg);";
+			//返回对象新属性：
+				return vFace;
+			}
+			/*************函数：*************
+			 * 	创建主角
+			 ***************************** */
+			function createHero(){
+			//获取初始位置：
+				var hMapBlocks = document.getElementsByClassName("mapBlocks");
+				var initPosX = hMapBlocks[0].offsetTop;
+				var initPosY = hMapBlocks[0].offsetLeft;
+			//设置主角在地图中的显示：（初始化）
+				 var hMapHero = document.getElementById("heroBlock");
+				 hMapHero.style.top = initPosX + "px";
+				 hMapHero.style.left = initPosY + "px";
+			//创建主角对象：
+				var oHero = new Object;//创建对象
+				//属性：（初始化）
+				oHero.x = initPosX;
+				oHero.y = initPosY;
+				oHero.face = 0;
+				oHero.posNum = 0;
+				//方法：
+				oHero.letsGo = function(){
+					//执行计算和显示：
+					var newData = funGo(this.x,this.y,this.posNum,this.face);
+					//回收属性值：
+					this.x = newData[0];
+					this.y = newData[1];
+					this.posNum = newData[2];
+				};
+				oHero.letsRot = function(turnWhere){
+					//执行计算和显示：
+					var newFace = funRot(this.face,turnWhere);
+					//回收属性值：
+					this.face = newFace;
+				};
+				
+				return oHero;
+				
+			}
+			/*************函数：*************
+			 * 	主函数
+			 ***************************** */
+			function initFun(){
+				var heroObj = createHero();//创建一个主角
+				
+				//检测事件：
+				document.getElementById("btnLeft").onclick = function(){
+					heroObj.letsRot("tl");
+				};
+				document.getElementById("btnRight").onclick = function(){
+					heroObj.letsRot("tr");
+				};
+				document.getElementById("btnBack").onclick = function(){
+					heroObj.letsRot("tb");
+				};
+				document.getElementById("btnGo").onclick = function(){
+					heroObj.letsGo();
+				};
+				
+			}
+			//运行主函数：
+			initFun();
+		</script>
+	</body>
+
+</html>
