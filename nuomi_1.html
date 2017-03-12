@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>流光字体和模糊</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				background: #eee;
+			}
+			/*总外壳*/
+			#mainOut {
+				position: relative;
+				margin: 10% auto 10% auto;
+			}
+			
+			#mainIn {
+				/*图片的外壳*/
+				background: #fff;
+				border: 1px solid;
+				border-radius: 10px;
+				margin: 10% auto 10% auto;
+				text-align: center;
+				width: 100%;
+			}
+			/*图片id*/
+			#thePic {}
+			/*模糊效果*/
+			@keyframes blur {
+				0% {}
+				100% {
+					filter: url(blur.svg#blur);
+					/* FireFox, Chrome, Opera */
+					-webkit-filter: blur(10px);
+					/* Chrome, Opera */
+					-moz-filter: blur(10px);
+					-ms-filter: blur(10px);
+					filter: blur(10px);
+					filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false);
+					/* IE6~IE9 */
+				}
+			}
+			/*模糊褪去效果*/
+			@keyframes blur2 {
+				0% {
+					filter: url(blur.svg#blur);
+					/* FireFox, Chrome, Opera */
+					-webkit-filter: blur(10px);
+					/* Chrome, Opera */
+					-moz-filter: blur(10px);
+					-ms-filter: blur(10px);
+					filter: blur(10px);
+					filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false);
+					/* IE6~IE9 */
+				}
+				100% {}
+			}
+			
+			#mainText {
+				/*文字和按钮的外壳*/
+				position: absolute;
+				text-align: center;
+				display: none;
+				background: rgba(220, 220, 220, 0.5);
+				border-radius: 10px;
+				padding: 10px;
+			}
+			
+			#theText {
+				/*welcome*/
+				font-family: "微软雅黑";
+				font-weight: bold;
+				color: transparent;
+				background-image: -webkit-linear-gradient(left, skyblue, yellow, skyblue, black, skyblue, yellow, skyblue, black, skyblue);
+				-webkit-background-clip: text;
+				background-size: 200% 100%;
+				animation: streamer 3s infinite linear;
+			}
+			
+			@keyframes streamer {
+				0% {
+					background-position: 0 0;
+				}
+				100% {
+					background-position: -100% 0;
+				}
+			}
+			
+			a,
+			a:hover {
+				font-family: "微软雅黑";
+				text-decoration: none;
+				color: black;
+				border: 1px solid black;
+				border-radius: 5px;
+				padding: 7px;
+			}
+			
+			a:hover {
+				color: #D45D5C;
+				border: 1px solid #D45D5C;
+			}
+			/*大屏幕*/
+			
+			@media only screen and (min-width: 768px) {
+				#mainOut {
+					width: 40%;
+				}
+				#mainText {
+					line-height: 50px;
+				}
+				#thePic {
+					width: 80%;
+				}
+				#theText {
+					font-size: 18px;
+				}
+				a {
+					font-size: 16px;
+				}
+			}
+			/*小屏幕*/
+			
+			@media only screen and (max-width: 768px) {
+				#mainOut {
+					width: 80%;
+				}
+				#mainText {
+					line-height: 40px;
+				}
+				#thePic {
+					width: 80%;
+				}
+				#theText {
+					font-size: 16px;
+				}
+				a {
+					font-size: 14px;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="mainOut">
+			<div id="mainIn">
+				<img src="img/pic1.png" id="thePic" />
+
+			</div>
+			<div id="mainText">
+				<p id="theText">Welcome to Sword Art Online.</p>
+				<a href="#">Sign In</a>
+			</div>
+		</div>
+
+		<!--js脚本-->
+		<script type="text/javascript">
+			function fComputePos() {
+				//get pic position:
+				var vWidth = parseInt($("#mainIn").css("width"));
+				var vHeight = parseInt($("#mainIn").css("height"));
+				//get text info:
+				var vTextWidth = parseInt($("#mainText").css("width"));
+				var vTextHeight = parseInt($("#mainText").css("height"));
+				//compute text pos:
+				var newTop = vHeight / 2 - (vTextHeight / 2);
+				var newLeft = vWidth / 2 - (vTextWidth / 2);
+
+				return [newTop, newLeft];
+			}
+
+			function funDisplay(top, left, flag) {
+
+				if(flag) {
+					$("#mainText").fadeIn();
+					$("#mainText").css({ "top": top + "px", "left": left + "px" });
+					$("#thePic").css({
+						"animation": "blur 1s ease forwards",
+					});
+				} else {
+					$("#mainText").fadeOut();
+					$("#thePic").css({
+						"animation": "blur2 1s ease",
+					});
+				}
+
+			}
+
+			function initFun() {
+				//creat new object:
+				var TextBlock = {
+					//属性：
+					top: 0,
+					left: 0,
+					//方法：
+					fDisplay: function(flag) { funDisplay(this.top, this.left, flag); }
+				};
+				$("#mainOut").mouseenter(function() {
+					var pos = fComputePos();
+					TextBlock.top = pos[0];
+					TextBlock.left = pos[1];
+					TextBlock.fDisplay(true);
+				});
+				$("#mainOut").mouseleave(function() {
+					TextBlock.fDisplay(false);
+				});
+			}
+			initFun(); //运行主函数
+		</script>
+	</body>
+
+</html>
